@@ -1,0 +1,61 @@
+{% extends 'weather/base.html' %}
+
+{% block content %}
+<h1>{{last_updated}}</h1>
+<div class="row row-cols-1 row-cols-md-2">
+    {% for day in days %}
+    <div class="col my-3 ">
+        <div class="card shadow">
+            <div class="card-header">
+                {{day.time}}
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <span class="badge badge-secondary">Air pressure at sea level</span>
+                    {{day.data.instant.details.air_pressure_at_sea_level}} 
+                    {{units.air_pressure_at_sea_level}}
+                </li>
+                <li class="list-group-item">
+                    <span class="badge badge-secondary">
+                        Air temperature
+                    </span>
+
+                    {{day.data.instant.details.air_temperature}} 
+                    {{units.air_temperature}}
+                </li>
+                <li class="list-group-item">
+                    <span class=" badge badge-secondary">
+                        Cloud area fraction
+                    </span>
+                    {{day.data.instant.details.cloud_area_fraction}} 
+                    {{units.cloud_area_fraction}}
+                </li>
+                <li class="list-group-item"> 
+                    <span class="badge badge-secondary">
+                        Cloud area fraction
+                    </span>
+                    {{day.data.instant.details.relative_humidity}}
+                    {{units.relative_humidity}}
+                </li>
+                <li class="list-group-item">
+                    <span class="badge badge-secondary">
+                        Wind from direction
+                    </span>
+                    {{day.data.instant.details.wind_from_direction}} 
+                    {{units.wind_from_direction}}
+                </li>
+                <li class="list-group-item">
+                    <span class="badge badge-secondary">
+                        Wind speed
+                    </span>
+                    {{day.data.instant.details.wind_speed}} 
+                    {{units.wind_speed}}
+                </li>
+              </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+    
+
+{% endblock %}
